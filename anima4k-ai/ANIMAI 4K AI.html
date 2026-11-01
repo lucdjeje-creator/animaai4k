@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ANIMAI 4K AI</title>
+<style>
+:root{
+ --site-primary:#7357ff;--site-secondary:#17182a;--site-background:#0b0c16;
+ --site-on-primary:#ffffff;--site-on-secondary:#f7f7ff;--site-on-background:#f4f3ff;
+ --site-font-body:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+ --site-font-heading:Inter,ui-sans-serif,system-ui,sans-serif;
+ --site-heading-scale:1;--site-spacing-scale:1;--site-radius-scale:1;--site-decoration-opacity:1;
+ --panel:#141526;--panel2:#1b1c31;--muted:#a7a8bd;--line:#2b2c43;--cyan:#65e5ff;--green:#69e6ae;
+}
+*{box-sizing:border-box}body{margin:0;background:var(--site-background);color:var(--site-on-background);font-family:var(--site-font-body)}
+#app{min-height:100vh;background:var(--site-background);color:var(--site-on-background);border-radius:0}
+header{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:#10111f}
+.brand{display:flex;gap:12px;align-items:center;font-weight:850;letter-spacing:.07em}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#8d71ff,#42d9ef);display:grid;place-items:center;color:#080914;font-weight:900}
+.brand span{color:#9a8aff}.nav{display:flex;gap:26px;color:var(--muted);font-size:13px}.nav a{color:inherit;text-decoration:none}.nav a:hover{color:white}
+.status{border:1px solid #315e58;color:#83e9c3;border-radius:30px;padding:8px 13px;font-size:12px}
+main{max-width:1240px;margin:auto;padding:42px 24px 70px}
+.hero{display:flex;justify-content:space-between;gap:25px;align-items:flex-end;margin-bottom:30px}
+.eyebrow{color:#a99bff;text-transform:uppercase;font-size:11px;font-weight:800;letter-spacing:.17em}
+h1{font-size:clamp(34px,5vw,56px);line-height:1.04;letter-spacing:-.045em;margin:10px 0 12px}
+h1 em{font-style:normal;background:linear-gradient(90deg,#9e89ff,#66e6f5);background-clip:text;color:transparent}
+.sub{color:var(--muted);max-width:630px;line-height:1.6;font-size:14px}
+.hero-chip{background:#17182b;border:1px solid #34334f;border-radius:16px;padding:16px 18px;min-width:160px}
+.hero-chip strong{display:block;font-size:22px}.hero-chip small{color:var(--muted)}
+.workspace{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:20px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 20px 60px #0002}
+.panel-title{font-weight:750;font-size:16px;margin-bottom:5px}.hint{font-size:12px;color:var(--muted);margin-bottom:20px}
+label{font-size:12px;color:#d9d8e8;font-weight:700;display:block;margin:17px 0 9px}
+textarea,input,select{width:100%;background:#0e0f1c;color:white;border:1px solid #33344c;border-radius:12px;padding:13px 14px;font:inherit;outline:none}
+textarea{min-height:126px;resize:vertical;line-height:1.5}textarea:focus,input:focus,select:focus{border-color:#8a78ff;box-shadow:0 0 0 3px #8a78ff22}
+.counter{text-align:right;color:#777991;font-size:11px;margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid #36364f;color:#c7c6d9;border-radius:9px;padding:9px 12px;background:#191a2c;font-size:12px;cursor:pointer}.chip.active{background:#2c2454;border-color:#8c76ff;color:#dcd5ff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.upload{border:1px dashed #51516c;border-radius:13px;padding:18px;text-align:center;color:var(--muted);font-size:12px;cursor:pointer}
+.upload b{display:block;color:#e8e7f6;margin:7px}
+.primary{width:100%;border:0;border-radius:13px;background:linear-gradient(100deg,#785bff,#4f9eff);color:white;font-weight:800;padding:15px;margin-top:21px;cursor:pointer;font-size:14px;box-shadow:0 9px 28px #6854ff3b}
+.primary:hover{filter:brightness(1.1)}.note{font-size:11px;color:#85869e;line-height:1.5;margin-top:12px}
+.preview{min-height:390px;background:radial-gradient(ellipse at 50% 20%,#3a2e71 0,#1a1935 36%,#10111f 75%);border:1px solid #373052;border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;position:relative}
+.preview:before,.preview:after{content:"";position:absolute;width:240px;height:240px;border:1px solid #8d7aff22;border-radius:50%;opacity:var(--site-decoration-opacity)}.preview:after{width:360px;height:360px}
+.play{width:68px;height:68px;border-radius:50%;background:#ffffff18;border:1px solid #ffffff55;display:grid;place-items:center;margin:0 auto 17px;font-size:23px;backdrop-filter:blur(8px)}
+.preview-content{z-index:1;padding:30px}.preview-content strong{font-size:15px}.preview-content p{font-size:12px;color:#b5b2ce;max-width:260px;line-height:1.6}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.metric{background:#191a2b;border:1px solid #2c2d45;border-radius:12px;padding:13px}.metric b{display:block;font-size:15px}.metric small{color:var(--muted);font-size:10px}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:32px 0 14px}.section-head h2{font-size:17px;margin:0}.section-head span{font-size:11px;color:var(--muted)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.sample{height:145px;border-radius:15px;position:relative;overflow:hidden;border:1px solid #36364c;background:linear-gradient(145deg,#31295c,#15182a 60%,#1c4560)}.sample:nth-child(2){background:linear-gradient(145deg,#553342,#24213e 60%,#4c456b)}.sample:nth-child(3){background:linear-gradient(145deg,#15485b,#20203e 60%,#3e315f)}
+.sample:before{content:"";position:absolute;inset:20% 27%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff9,#9f8dff44 30%,transparent 70%);filter:blur(2px)}.sample span{position:absolute;left:13px;bottom:12px;font-size:12px;font-weight:700;text-shadow:0 2px 8px #000}
+footer{border-top:1px solid var(--line);padding:22px 5vw;color:#777991;font-size:11px;display:flex;justify-content:space-between}
+@media(max-width:850px){.workspace{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column}.nav{display:none}.gallery{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){main{padding:28px 15px 50px}.panel{padding:17px}.two{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.hero-chip{width:100%}}
+</style></head>
+<body><div id="app">
+<header><div class="brand"><div class="logo">A</div> ANIMAI <span>4K AI</span></div><nav class="nav"><a href="#studio">Estúdio</a><a href="#styles">Estilos</a><a href="#gallery">Inspiração</a></nav><div class="status">● SISTEMA DE ESTÚDIO</div></header>
+<main>
+<section class="hero"><div><div class="eyebrow">AI VIDEO CREATION STUDIO</div><h1>Suas ideias em movimento.<br><em>Sem limites criativos.</em></h1><div class="sub">Crie vídeos com inteligência artificial a partir de texto ou imagem. Explore animação 2D, 3D, anime e visual cinematográfico em uma única plataforma.</div></div><div class="hero-chip"><strong>4K UHD</strong><small>Meta de exportação • 3840 × 2160</small></div></section>
+<div class="workspace" id="studio">
+<section class="panel"><div class="panel-title">Criar novo vídeo</div><div class="hint">Descreva a cena que você quer ver ganhar vida.</div>
+<label for="prompt">PROMPT DE CRIAÇÃO</label><textarea id="prompt" maxlength="1800" placeholder="Ex.: Um dragão majestoso sobrevoando uma cidade futurista ao pôr do sol, câmera cinematográfica em movimento, iluminação volumétrica, detalhes 3D..."></textarea><div class="counter" id="counter">0 / 1800</div>
+<label>ESTILO VISUAL</label><div class="chips" id="styles"><button class="chip active">Automático</button><button class="chip">3D</button><button class="chip">2D</button><button class="chip">Anime</button><button class="chip">Realista</button><button class="chip">Cinematográfico</button></div>
+<div class="two"><div><label>FORMATO</label><select><option>16:9 · YouTube</option><option>9:16 · Reels / TikTok</option><option>1:1 · Quadrado</option></select></div><div><label>DURAÇÃO</label><select><option>5 segundos</option><option>10 segundos</option><option>15 segundos</option></select></div></div>
+<div class="two"><div><label>RESOLUÇÃO DESEJADA</label><select><option>4K UHD (se suportado pelo modelo)</option><option>1080p Full HD</option></select></div><div><label>MOVIMENTO DE CÂMERA</label><select><option>Dinâmico</option><option>Travelling suave</option><option>Panorâmica</option><option>Close-up</option><option>Fixo</option></select></div></div>
+<label>IMAGEM DE REFERÊNCIA (OPCIONAL)</label><label class="upload" for="file">＋ <b>Enviar imagem para animar</b>PNG, JPG ou WEBP · até 10 MB<input id="file" type="file" accept="image/png,image/jpeg,image/webp" hidden></label>
+<button class="primary" id="generate">✦ Gerar vídeo com IA</button><div class="note">Geração real conectada ao servidor ANIMAI. Publique o backend Node.js no mesmo domínio e configure FAL_KEY como variável secreta. A resolução final depende do modelo contratado.</div>
+</section>
+<section class="panel"><div class="panel-title">Monitor de criação</div><div class="hint">Prévia do seu próximo projeto</div><div class="preview" id="preview"><div class="preview-content"><div class="play">▶</div><strong>Seu vídeo começa com uma ideia</strong><p>Escreva um prompt ou envie uma imagem para preparar sua criação.</p></div></div><div class="metrics"><div class="metric"><b>4K</b><small>ALVO DE EXPORTAÇÃO</small></div><div class="metric"><b>4 estilos</b><small>FAMÍLIAS VISUAIS</small></div><div class="metric"><b>MP4</b><small>FORMATO FINAL</small></div></div>
+<div class="section-head"><h2>Fluxo de produção</h2><span>PIPELINE</span></div><div style="display:grid;gap:11px;color:#b9b8cb;font-size:12px"><div>① &nbsp; Prompt e referências</div><div>② &nbsp; Geração pelo modelo de vídeo</div><div>③ &nbsp; Verificação de resolução</div><div>④ &nbsp; Exportação e download MP4</div></div></section>
+</div>
+<div class="section-head" id="gallery"><h2>Explore possibilidades</h2><span>REFERÊNCIAS VISUAIS</span></div><div class="gallery"><div class="sample"><span>Universos 3D</span></div><div class="sample"><span>Animação e anime</span></div><div class="sample"><span>Cinema realista</span></div></div>
+</main><footer><span>ANIMAI 4K AI · Estúdio de criação visual</span><span>Protótipo web · Geração real requer API configurada</span></footer></div>
+<script>
+const p=document.querySelector('#prompt'),c=document.querySelector('#counter');p.addEventListener('input',()=>c.textContent=p.value.length+' / 1800');
+async function readApiJson(response){const raw=await response.text();try{return JSON.parse(raw)}catch{return {error:response.status===404?'O servidor de geração não foi encontrado. Configure o backend Node.js com a rota /api/generate no mesmo domínio.':'O servidor respondeu em formato inválido. Verifique se o backend está ativo e configurado.'}}}
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active')}));
+document.querySelector('#file').addEventListener('change',e=>{const f=e.target.files[0];if(f){document.querySelector('.upload b').textContent=f.name}});
+document.querySelector('#generate').addEventListener('click',async()=>{
+ const text=p.value.trim();if(!text){alert('Escreva uma descrição para o vídeo primeiro.');return}
+ const btn=document.querySelector('#generate'),preview=document.querySelector('#preview');
+ const active=document.querySelector('.chip.active')?.textContent||'Automático';
+ const selects=[...document.querySelectorAll('select')];
+ const aspect=selects[0].selectedIndex===1?'9:16':selects[0].selectedIndex===2?'1:1':'16:9';
+ const duration=selects[1].value.includes('10')?'10':'5';
+ const resolution=selects[2].selectedIndex===0?'4k':'1080p';
+ const camera=selects[3].value;
+ const fd=new FormData();fd.append('prompt',`${text}. Camera movement: ${camera}.`);fd.append('style',active.toLowerCase());fd.append('aspectRatio',aspect);fd.append('duration',duration);fd.append('resolution',resolution);
+ const file=document.querySelector('#file').files[0];if(file)fd.append('image',file);
+ btn.disabled=true;btn.textContent='Enviando para a IA...';
+ preview.innerHTML='<div class="preview-content"><div class="play">◌</div><strong>Enviando sua criação</strong><p>Conectando ao mecanismo de geração de vídeo...</p></div>';
+ try{
+  const start=await fetch('/api/generate',{method:'POST',body:fd});const data=await readApiJson(start);if(!start.ok)throw new Error(data.error||'Não foi possível iniciar a geração');
+  preview.innerHTML='<div class="preview-content"><div class="play">◌</div><strong>Vídeo em produção</strong><p id="jobstate">Sua solicitação foi recebida. Isso pode levar alguns minutos.</p></div>';
+  const poll=async()=>{const r=await fetch('/api/jobs/'+encodeURIComponent(data.id));const j=await readApiJson(r);if(!r.ok)throw new Error(j.error||'Erro consultando o trabalho');const state=document.querySelector('#jobstate');if(state)state.textContent='Status: '+j.status;
+   if(j.status==='COMPLETED'&&j.videoUrl){preview.innerHTML=`<video controls playsinline style="width:100%;height:100%;max-height:390px;object-fit:contain" src="${j.videoUrl}"></video><a href="${j.videoUrl}" target="_blank" rel="noopener" style="position:absolute;bottom:12px;right:12px;background:#7357ff;color:white;padding:9px 12px;border-radius:9px;text-decoration:none;font-size:12px">Abrir / baixar MP4 ↗</a>`;btn.disabled=false;btn.textContent='✦ Gerar outro vídeo';return}
+   if(j.status==='FAILED')throw new Error(j.error||'A geração falhou');await new Promise(resolve=>setTimeout(resolve,5000));return poll();
+  };await poll();
+ }catch(err){preview.innerHTML='<div class="preview-content"><strong>Não foi possível gerar</strong><p>'+err.message+'</p></div>';btn.disabled=false;btn.textContent='✦ Tentar novamente'}
+});
+</script></body></html>
